@@ -13,7 +13,6 @@ def display_file_contents(filename):
 
     Raises:
         FileNotFoundError: If the file is not found.
-
     """
     try:
         with open(filename, 'r') as file:
