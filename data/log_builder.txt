@@ -1,0 +1,3 @@
+Application started.
+Something happened in the application.
+Error occurred in the application.
