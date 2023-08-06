@@ -15,7 +15,7 @@ from abc import ABC, abstractmethod
 
 class EmailSender:
     def send_email(self, recipient, subject, message):
-        # Code to send an email
+        # Code to send an email2
         print(f"Sending email to {recipient}: {subject} - {message}")
 
 
