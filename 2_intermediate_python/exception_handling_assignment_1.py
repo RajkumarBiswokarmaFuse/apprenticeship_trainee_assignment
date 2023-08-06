@@ -33,8 +33,8 @@ def main():
             # Call the function and perform division
             result = perform_division(int(num1), num2)
             print("Result of the division:", result)
-        except ZeroDivisionError as zde:
-            print(zde)
+        except ZeroDivisionError as msg:
+            print(msg)
 
 
 if __name__ == "__main__":
