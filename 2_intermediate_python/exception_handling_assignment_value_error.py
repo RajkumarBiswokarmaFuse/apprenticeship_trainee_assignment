@@ -4,6 +4,7 @@
 
 import argparse
 
+
 def display_file_contents(filename):
     """
     Display the contents of the file with the given filename.
@@ -21,6 +22,7 @@ def display_file_contents(filename):
     except FileNotFoundError:
         raise FileNotFoundError(f"Error: File '{filename}' not found.")
 
+
 def main():
     parser = argparse.ArgumentParser(description='Display the contents of a file.')
     parser.add_argument('filename', type=str, help='The name of the file to be displayed.')
@@ -30,8 +32,9 @@ def main():
         display_file_contents(args.filename)
     except FileNotFoundError as fnfe:
         print(fnfe)
-    except Exception as e:
-        print("An error occurred:", e)
+    except Exception as msg:
+        print("An error occurred:", msg)
+
 
 if __name__ == "__main__":
     main()
