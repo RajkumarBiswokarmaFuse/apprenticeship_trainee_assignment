@@ -1,5 +1,7 @@
-# Create a function search_log that takes a log file and a search keyword as input.
-# The function should find and display all lines containing the search keyword.
+""" 
+    Create a function search_log that takes a log file and a search keyword as input.
+    The function should find and display all lines containing the search keyword.
+"""
 
 def search_log(log_file, search_keyword):
     """
@@ -11,6 +13,7 @@ def search_log(log_file, search_keyword):
 
 
     """
+    # pylint: disable=unspecified-encoding
     try:
         with open(log_file, 'r') as file:
             lines = file.readlines()
@@ -27,14 +30,12 @@ def search_log(log_file, search_keyword):
             print(f"No lines containing '{search_keyword}' found in the log file '{log_file}'.")
     except FileNotFoundError:
         print(f"Error: File '{log_file}' not found.")
-    except Exception as e:
-        print("An error occurred:", e)
 
-def main(): 
+def main():
+    """This is a main function."""
     search_log("./data/log.txt", "error")
     search_log("./data/log.txt", "assist")
     search_log("./data/log.txt", "fusemachines")
-    
 
 if __name__ == "__main__":
-    main() 
+    main()

@@ -1,6 +1,9 @@
-# Implement a program that reads a CSV file named "data.csv," containing columns
-# "Name" and "Age." Create a new CSV file called "adults.csv" with only the rows of
-# individuals who are 18 years or older.
+"""
+Implement a program that reads a CSV file named "data.csv," containing columns
+"Name" and "Age." Create a new CSV file called "adults.csv" with only the rows of
+individuals who are 18 years or older.
+
+"""
 
 import csv
 
@@ -16,6 +19,7 @@ def filter_adults(input_file, output_file):
         >>> filter_adults("data.csv", "adults.csv")
         Adults filtered successfully. New file created: adults.csv
     """
+    # pylint: disable=unspecified-encoding
     try:
         with open(input_file, newline='') as csvfile:
             reader = csv.DictReader(csvfile)
@@ -31,9 +35,12 @@ def filter_adults(input_file, output_file):
     except FileNotFoundError:
         print(f"Error: File '{input_file}' not found.")
     except ValueError:
-        print(f"Error: Invalid 'Age' value found in the CSV file.")
+        print("Error: Invalid 'Age' value found in the CSV file.")
 
 def main():
+    """
+        This is a main function
+    """
     input_file = "./data/data.csv"
     output_file = "./data/adults.csv"
     filter_adults(input_file, output_file)
