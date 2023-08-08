@@ -1,3 +1,4 @@
+""" This is a assignment of exception ahndling."""
 def perform_division(num1, num2):
     """
     Perform division (num1 / num2) and handle ZeroDivisionError.
@@ -22,6 +23,9 @@ def perform_division(num1, num2):
 
 
 def main():
+    """_
+        This is a main function
+    """
     while True:
         try:
             num1 = input("Enter the numerator (or 'q' to quit): ")
