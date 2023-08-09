@@ -1,15 +1,18 @@
 """
-Implement a program that reads a CSV file named "data.csv," containing columns
-"Name" and "Age." Create a new CSV file called "adults.csv" with only the rows of
-individuals who are 18 years or older.
+Implement a program that reads a CSV file named "data.csv,"
+containing columns "Name" and "Age." Create a new CSV file
+called "adults.csv" with only the rows of individuals who
+are 18 years or older.
 
 """
 
 import csv
 
+
 def filter_adults(input_file, output_file):
     """
-    Read data from the input CSV file and filter adults to create a new CSV file.
+    Read data from the input CSV file and filter adults
+    to create a new CSV file.
 
     Args:
         input_file (str): The name of the input CSV file.
@@ -37,6 +40,7 @@ def filter_adults(input_file, output_file):
     except ValueError:
         print("Error: Invalid 'Age' value found in the CSV file.")
 
+
 def main():
     """
         This is a main function
@@ -44,6 +48,7 @@ def main():
     input_file = "./data/data.csv"
     output_file = "./data/adults.csv"
     filter_adults(input_file, output_file)
+
 
 if __name__ == "__main__":
     main()

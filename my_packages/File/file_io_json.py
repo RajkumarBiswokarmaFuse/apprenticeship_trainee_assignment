@@ -1,20 +1,23 @@
 """
-    Create a function add_to_json that takes a filename and a dictionary as input. The
-    should read the JSON data from the file, add the new dictionary to it, and
+    Create a function add_to_json that takes a filename and a
+    dictionary as input. The should read the JSON data from
+    the file, add the new dictionary to it, and
     write the updated data back to the same file
 """
 
 import json
 
+
 def add_to_json(filename, new_data):
     """
-    Read JSON data from the file, add the new dictionary, and write back to the same file.
+    Read JSON data from the file, add the new dictionary,
+    and write back to the same file.
 
     Args:
         filename (str): The name of the JSON file.
         new_data (dict): The dictionary to be added to the JSON data.
 
-    
+
     """
     # pylint: disable=unspecified-encoding
     try:
@@ -34,6 +37,7 @@ def add_to_json(filename, new_data):
         print(f"Error: File '{filename}' not found.")
     except json.JSONDecodeError:
         print(f"Error: Invalid JSON format in the file '{filename}'.")
+
 
 def main():
     """
