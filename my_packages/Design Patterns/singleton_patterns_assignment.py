@@ -1,11 +1,9 @@
 """
-Implement a configuration manager using the Singleton
-Design Pattern. The configuration manager should read configuration settings from a
-file and provide access to these settings throughout the application. Demonstrate how
-the Singleton Design Pattern ensures that there is only one instance of the
-configuration manager, preventing unnecessary multiple reads of the configuration file.
+This Programs demonstrates the use of Singleton Design Patterns.
 """
 # pylint: disable=unspecified-encoding
+
+
 class ConfigurationManager:
     """
     Singleton class for managing configuration settings.
@@ -26,8 +24,7 @@ class ConfigurationManager:
 
     def init(self, config_file):
         """
-        Initialize the configuration manager with settings from the specified file.
-
+            Initialize the configuration manager with settings.
         Args:
             config_file (str): The path to the configuration file.
         """
@@ -84,7 +81,9 @@ if __name__ == "__main__":
     config_manager2.init(CONFIG_FILE_PATH)
 
     # Check if both instances are the same
-    print(f"config_manager1 is config_manager2: {config_manager1 is config_manager2}")
+    print(
+        f"config_manager1 is config_manager2: \
+        {config_manager1 is config_manager2}")
 
     # Access configuration settings
     setting1 = config_manager1.get_setting("setting1")

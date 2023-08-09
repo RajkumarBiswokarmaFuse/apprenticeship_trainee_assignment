@@ -1,13 +1,9 @@
 """
-Design a document generator using the Builder Design
-Pattern. Create a DocumentBuilder that creates documents of various types (e.g., PDF,
-HTML, Plain Text). Implement the builder methods to format the document content and
-structure according to the chosen type. Demonstrate how the Builder Design Pattern
-allows for the creation of different document formats without tightly coupling the
-document generation logic.
+This programs demonstates a Builder Design Patterns.
 """
 
 from abc import ABC, abstractmethod
+
 
 class DocumentBuilder(ABC):
     """
@@ -16,12 +12,10 @@ class DocumentBuilder(ABC):
     @abstractmethod
     def set_title(self, title):
         """Set the title of the document."""
-    
 
     @abstractmethod
     def add_heading(self, heading):
         """Add a heading to the document."""
-    
 
     @abstractmethod
     def add_paragraph(self, paragraph):
@@ -30,11 +24,13 @@ class DocumentBuilder(ABC):
     @abstractmethod
     def get_result(self):
         """Get the final document result."""
-    
+
+
 class PDFDocumentBuilder(DocumentBuilder):
     """
     Concrete builder class for creating PDF documents.
     """
+
     def __init__(self):
         self.pdf_document = PDFDocument()
 
@@ -50,10 +46,12 @@ class PDFDocumentBuilder(DocumentBuilder):
     def get_result(self):
         return self.pdf_document
 
+
 class HTMLDocumentBuilder(DocumentBuilder):
     """
     Concrete builder class for creating HTML documents.
     """
+
     def __init__(self):
         self.html_document = "<html><head><title></title></head><body>"
 
@@ -70,10 +68,12 @@ class HTMLDocumentBuilder(DocumentBuilder):
     def get_result(self):
         return self.html_document + "</body></html>"
 
+
 class PlainTextDocumentBuilder(DocumentBuilder):
     """
     Concrete builder class for creating plain text documents.
     """
+
     def __init__(self):
         self.plain_text_document = ""
 
@@ -89,10 +89,12 @@ class PlainTextDocumentBuilder(DocumentBuilder):
     def get_result(self):
         return self.plain_text_document
 
+
 class DocumentDirector:
     """
     Director class that constructs documents using a builder.
     """
+
     def __init__(self, builder):
         self.builder = builder
 
@@ -103,16 +105,19 @@ class DocumentDirector:
         for paragraph in paragraphs:
             self.builder.add_paragraph(paragraph)
 
+
 class PDFDocument:
     """
     Product class representing a PDF document.
     """
+
     def __init__(self):
         self.content = ""
 
     def add_content(self, content):
         """Add content to the PDF document."""
         self.content += content
+
 
 if __name__ == "__main__":
     title = "Sample "
