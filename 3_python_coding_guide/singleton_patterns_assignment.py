@@ -1,25 +1,46 @@
-# Implement a configuration manager using the Singleton
-# Design Pattern. The configuration manager should read configuration settings from a
-# file and provide access to these settings throughout the application. Demonstrate howthe Singleton Design Pattern ensures that there is only one instance of the
-# configuration manager, preventing unnecessary multiple reads of the configuration file.
-
-
+"""
+Implement a configuration manager using the Singleton
+Design Pattern. The configuration manager should read configuration settings from a
+file and provide access to these settings throughout the application. Demonstrate how
+the Singleton Design Pattern ensures that there is only one instance of the
+configuration manager, preventing unnecessary multiple reads of the configuration file.
+"""
+# pylint: disable=unspecified-encoding
 class ConfigurationManager:
+    """
+    Singleton class for managing configuration settings.
+    """
+
     _instance = None
 
     def __new__(cls):
         if cls._instance is None:
             cls._instance = super(ConfigurationManager, cls).__new__(cls)
-            cls._instance._initialized = False
         return cls._instance
 
-    def init(self, config_file):
+    def __init__(self):
+        self._initialized = False
         if not self._initialized:
             self._config = {}
-            self._load_config(config_file)
             self._initialized = True
 
+    def init(self, config_file):
+        """
+        Initialize the configuration manager with settings from the specified file.
+
+        Args:
+            config_file (str): The path to the configuration file.
+        """
+        if not self._initialized:
+            self._load_config(config_file)
+
     def _load_config(self, config_file):
+        """
+        Load configuration settings from the specified file.
+
+        Args:
+            config_file (str): The path to the configuration file.
+        """
         try:
             with open(config_file, 'r') as file:
                 for line in file:
@@ -29,22 +50,38 @@ class ConfigurationManager:
             print(f"Error reading configuration file: {config_file}")
 
     def get_setting(self, key):
+        """
+        Get a configuration setting by its key.
+
+        Args:
+            key (str): The key of the setting.
+
+        Returns:
+            str: The value of the setting, or None if not found.
+        """
         return self._config.get(key)
 
     def set_setting(self, key, value):
+        """
+        Set or update a configuration setting.
+
+        Args:
+            key (str): The key of the setting.
+            value (str): The new value for the setting.
+        """
         self._config[key] = value
 
 
 if __name__ == "__main__":
-    config_file = "config.txt"
+    CONFIG_FILE_PATH = "config.txt"
 
     # Create a configuration manager instance (Singleton)
     config_manager1 = ConfigurationManager()
-    config_manager1.init(config_file)
+    config_manager1.init(CONFIG_FILE_PATH)
 
     # Try to create another instance (should return the same instance)
     config_manager2 = ConfigurationManager()
-    config_manager2.init(config_file)
+    config_manager2.init(CONFIG_FILE_PATH)
 
     # Check if both instances are the same
     print(f"config_manager1 is config_manager2: {config_manager1 is config_manager2}")

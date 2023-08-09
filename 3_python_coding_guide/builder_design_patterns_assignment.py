@@ -1,32 +1,40 @@
-# Design a document generator using the Builder Design
-# Pattern. Create a DocumentBuilder that creates documents of various types (e.g., PDF,
-# HTML, Plain Text). Implement the builder methods to format the document content and
-# structure according to the chosen type. Demonstrate how the Builder Design Pattern
-# allows for the creation of different document formats without tightly coupling the
-# document generation logic.
+"""
+Design a document generator using the Builder Design
+Pattern. Create a DocumentBuilder that creates documents of various types (e.g., PDF,
+HTML, Plain Text). Implement the builder methods to format the document content and
+structure according to the chosen type. Demonstrate how the Builder Design Pattern
+allows for the creation of different document formats without tightly coupling the
+document generation logic.
+"""
 
 from abc import ABC, abstractmethod
 
-# Document Builder interface
 class DocumentBuilder(ABC):
+    """
+    Abstract base class for document builders.
+    """
     @abstractmethod
     def set_title(self, title):
-        pass
+        """Set the title of the document."""
+    
 
     @abstractmethod
     def add_heading(self, heading):
-        pass
+        """Add a heading to the document."""
+    
 
     @abstractmethod
     def add_paragraph(self, paragraph):
-        pass
+        """Add a paragraph to the document."""
 
     @abstractmethod
     def get_result(self):
-        pass
-
-# Concrete PDF Document Builder
+        """Get the final document result."""
+    
 class PDFDocumentBuilder(DocumentBuilder):
+    """
+    Concrete builder class for creating PDF documents.
+    """
     def __init__(self):
         self.pdf_document = PDFDocument()
 
@@ -42,13 +50,16 @@ class PDFDocumentBuilder(DocumentBuilder):
     def get_result(self):
         return self.pdf_document
 
-# Concrete HTML Document Builder
 class HTMLDocumentBuilder(DocumentBuilder):
+    """
+    Concrete builder class for creating HTML documents.
+    """
     def __init__(self):
         self.html_document = "<html><head><title></title></head><body>"
 
     def set_title(self, title):
-        self.html_document = self.html_document.replace("<title></title>", f"<title>{title}</title>")
+        self.html_document = self.html_document.replace("<title></title>",
+                                                        f"<title>{title}</title>")
 
     def add_heading(self, heading):
         self.html_document += f"<h1>{heading}</h1>"
@@ -59,8 +70,10 @@ class HTMLDocumentBuilder(DocumentBuilder):
     def get_result(self):
         return self.html_document + "</body></html>"
 
-# Concrete Plain Text Document Builder
 class PlainTextDocumentBuilder(DocumentBuilder):
+    """
+    Concrete builder class for creating plain text documents.
+    """
     def __init__(self):
         self.plain_text_document = ""
 
@@ -76,34 +89,39 @@ class PlainTextDocumentBuilder(DocumentBuilder):
     def get_result(self):
         return self.plain_text_document
 
-
-# Document Director
 class DocumentDirector:
+    """
+    Director class that constructs documents using a builder.
+    """
     def __init__(self, builder):
         self.builder = builder
 
     def construct_document(self, title, heading, paragraphs):
+        """Construct a document using the provided builder."""
         self.builder.set_title(title)
         self.builder.add_heading(heading)
         for paragraph in paragraphs:
             self.builder.add_paragraph(paragraph)
 
-# Product class for PDF Document
 class PDFDocument:
+    """
+    Product class representing a PDF document.
+    """
     def __init__(self):
         self.content = ""
 
     def add_content(self, content):
+        """Add content to the PDF document."""
         self.content += content
-
 
 if __name__ == "__main__":
     title = "Sample "
     heading = "Introduction of Me"
     paragraphs = [
-        "Hello I am Raj Kumar Biswokarma. ",
+        "Hello I am Raj Kumar Biswokarma.",
         "I am from Butwal Rupandehi.",
-        "I am currently pursing Bachelor degree in Computer Science and Information Technology.",
+        "I am currently pursuing a Bachelor's degree in Computer Science\
+        and Information Technology.",
     ]
 
     # Create PDF Document
