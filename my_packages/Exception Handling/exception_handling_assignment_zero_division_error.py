@@ -1,4 +1,5 @@
-""" This is a assignment of exception ahndling."""
+""" This is a assignment of exception handling."""
+
 def perform_division(num1, num2):
     """
     Perform division (num1 / num2) and handle ZeroDivisionError.

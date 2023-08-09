@@ -1,10 +1,10 @@
 """
-Write a Python program that takes two integers as input and performs division (num1
-/ num2). Handle both ValueError (if non-integer input) and ZeroDivisionError and
-display appropriate error messages.
+This program demonstrates a use of Value and Zero Division Error.
 """
 
+
 def perform_division(num1, num2):
+
     """
     Perform division (num1 / num2) and handle ZeroDivisionError.
 
@@ -27,6 +27,7 @@ def perform_division(num1, num2):
     except ValueError as exc:
         raise ValueError('Both numbers must be integers') from exc
 
+
 def main():
     """
     This is the main function.
@@ -46,5 +47,8 @@ def main():
             print("Value Error:", value_error)
         except ZeroDivisionError as zde:
             print("Zero Division Error:", zde)
+
+
 if __name__ == "__main__":
+
     main()

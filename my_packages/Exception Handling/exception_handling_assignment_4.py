@@ -5,9 +5,10 @@
 class WeakPasswordError(Exception):
     pass
 
+
 def check_password_strength(password):
     """
-    Check the strength of the password and raise WeakPasswordError if it's weak.
+    Check the strength of the password.
 
     Args:
         password (str): The password provided by the user.
@@ -17,7 +18,9 @@ def check_password_strength(password):
 
     """
     if len(password) < 8:
-        raise WeakPasswordError("Error: Password must be at least 8 characters long.")
+        raise WeakPasswordError(
+            "Error: Password must be at least 8 characters long.")
+
 
 def main():
     try:
@@ -26,6 +29,7 @@ def main():
         print("Password is strong and accepted.")
     except WeakPasswordError as wpe:
         print(wpe)
+
 
 if __name__ == "__main__":
     main()

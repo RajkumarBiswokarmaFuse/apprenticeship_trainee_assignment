@@ -22,8 +22,8 @@ def search_log(log_file, search_keyword):
             lines = file.readlines()
 
         found_lines = [f"[{i + 1}] {line.strip()}"
-                        for i, line in enumerate(lines)
-                        if search_keyword in line.lower()]
+                       for i, line in enumerate(lines)
+                       if search_keyword in line.lower()]
 
         if found_lines:
             print(f"Found {len(found_lines)} lines containing \
