@@ -1,15 +1,11 @@
 """
-Create a Python class to represent a University. The university should have
-attributes like name, location, and a list of departments. Implement encapsulation to
-protect the internal data of the University class. Create a Department class that
-inherits from the University class. The Department class should have attributes like
-department name, head of the department, and a list of courses offered. Implement
-polymorphism by defining a common method for both the University and
-Department classes to display their details.
+    Assignment that demonstates a Object Oriented Programming.
 """
+
 
 class University:
     """This is a universit class."""
+
     def __init__(self, name, location):
         self._name = name
         self._location = location
@@ -42,7 +38,11 @@ class University:
 
 
 class Department(University):
-    """This is a Department class which inherits the property of University Class."""
+
+    """This is a Department class which
+    inherits the property of University Class.
+    """
+
     def __init__(self, name, location, head):
         super().__init__(name, location)
         self._head = head
@@ -78,7 +78,8 @@ def main():
 
     # Create Departments
     dept1 = Department("Computer Science", "Science Building", "Dr. Jhatka")
-    dept2 = Department("Electrical Engineering", "Engineering Building", "Dr. Electrician")
+    dept2 = Department("Electrical Engineering",
+                       "Engineering Building", "Dr. Electrician")
 
     # Add courses to departments
     dept1.add_course("Introduction to Computer")
@@ -94,6 +95,7 @@ def main():
     university.display_details()
     for department in university.get_departments():
         department.display_details()
+
 
 if __name__ == "__main__":
     main()
